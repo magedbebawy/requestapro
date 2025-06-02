@@ -28,7 +28,6 @@ RUN npm install --frozen-lockfile --production || npm install --production
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.js ./next.config.js
-COPY --from=builder /app/.env.local ./.env.local
 COPY --from=builder /app/src ./src
 
 EXPOSE 3000
