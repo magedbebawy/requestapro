@@ -6,8 +6,8 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: requestapro-webapp
-  AZURE_RESOURCE_GROUP: requestapro-resource-group
-  AZURE_CONTAINER_REGISTRY: requestapro.azurecr.io
+  AZURE_RESOURCE_GROUP: requestAPro
+  AZURE_CONTAINER_REGISTRY: magedACR
   IMAGE_NAME: requestapro-website
 
 jobs:
