@@ -5,9 +5,9 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_WEBAPP_NAME: <your-app-service-name>         # e.g. requestapro-webapp
-  AZURE_RESOURCE_GROUP: <your-resource-group>        # e.g. myResourceGroup
-  AZURE_CONTAINER_REGISTRY: <your-acr-name>.azurecr.io # e.g. myacr.azurecr.io
+  AZURE_WEBAPP_NAME: requestapro-webapp
+  AZURE_RESOURCE_GROUP: requestapro-resource-group
+  AZURE_CONTAINER_REGISTRY: requestapro.azurecr.io
   IMAGE_NAME: requestapro-website
 
 jobs:
