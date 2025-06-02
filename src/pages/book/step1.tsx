@@ -3,10 +3,11 @@ import { useRouter } from "next/router";
 import { useBooking } from "@/context/BookingContext";
 import { services } from "@/data/services";
 import type {
+  TVMountingDetails,
   TVSizeRange,
+  WallMountType,
   WireManagement,
   LiftingHelp,
-  TVMountingDetails,
   DeviceType,
   NetworkSetup,
   MountingType,
@@ -241,7 +242,7 @@ export default function BookingStep1() {
                         onChange={(e) =>
                           handleTVMountingDetailsChange(
                             "tvSizeRange",
-                            e.target.value as any
+                            e.target.value as TVSizeRange
                           )
                         }
                         className="sr-only"
@@ -310,7 +311,7 @@ export default function BookingStep1() {
                         onChange={(e) =>
                           handleTVMountingDetailsChange(
                             "wallMountType",
-                            e.target.value as any
+                            e.target.value as WallMountType
                           )
                         }
                         className="sr-only"
@@ -373,7 +374,7 @@ export default function BookingStep1() {
                         onChange={(e) =>
                           handleTVMountingDetailsChange(
                             "wireManagement",
-                            e.target.value as any
+                            e.target.value as WireManagement
                           )
                         }
                         className="sr-only"
@@ -438,7 +439,7 @@ export default function BookingStep1() {
                         onChange={(e) =>
                           handleTVMountingDetailsChange(
                             "liftingHelp",
-                            e.target.value as any
+                            e.target.value as LiftingHelp
                           )
                         }
                         className="sr-only"
@@ -622,7 +623,7 @@ export default function BookingStep1() {
                         onChange={(e) =>
                           handleSmartHomeDetailsChange(
                             "deviceType",
-                            e.target.value as any
+                            e.target.value as DeviceType
                           )
                         }
                         className="sr-only"
@@ -769,7 +770,7 @@ export default function BookingStep1() {
                         onChange={(e) =>
                           handleSmartHomeDetailsChange(
                             "networkSetup",
-                            e.target.value as any
+                            e.target.value as NetworkSetup
                           )
                         }
                         className="sr-only"
@@ -976,7 +977,7 @@ export default function BookingStep1() {
                         onChange={(e) =>
                           handleFurnitureAssemblyDetailsChange(
                             "jobSize",
-                            e.target.value as any
+                            e.target.value as JobSize
                           )
                         }
                         className="sr-only"
