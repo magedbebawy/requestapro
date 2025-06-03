@@ -912,29 +912,49 @@ export default function BookingStep1() {
                   </h2>
                   <ul className="mb-6 space-y-2">
                     <li>
-                      <span className="font-medium">Device Type:</span>{" "}
-                      {smartHomeDetails?.deviceType}
+                      <span className="font-medium text-gray-900">
+                        Device Type:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {smartHomeDetails?.deviceType}
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Device Brand:</span>{" "}
-                      {smartHomeDetails?.deviceBrand}
+                      <span className="font-medium text-gray-900">
+                        Device Brand:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {smartHomeDetails?.deviceBrand}
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Device Count:</span>{" "}
-                      {smartHomeDetails?.deviceCount}
+                      <span className="font-medium text-gray-900">
+                        Device Count:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {smartHomeDetails?.deviceCount}
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Network Setup:</span>{" "}
-                      {smartHomeDetails?.networkSetup}
+                      <span className="font-medium text-gray-900">
+                        Network Setup:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {smartHomeDetails?.networkSetup}
+                      </span>
                     </li>
                     {smartHomeDetails?.deviceType === "other" && (
                       <li>
-                        <span className="font-medium">Additional Devices:</span>{" "}
-                        {smartHomeDetails?.additionalDevices}
+                        <span className="font-medium text-gray-900">
+                          Additional Devices:
+                        </span>{" "}
+                        <span className="text-gray-900">
+                          {smartHomeDetails?.additionalDevices}
+                        </span>
                       </li>
                     )}
                     <li>
-                      <span className="font-medium">Total:</span>{" "}
+                      <span className="font-medium text-gray-900">Total:</span>{" "}
                       <span className="text-blue-600 font-bold">
                         ${calculateTotal()}
                       </span>

@@ -176,21 +176,24 @@ export default function BookingStep2() {
                         week: "Week",
                         day: "Day",
                       }}
-                      eventContent={(eventInfo) => (
-                        <div className="fc-event-main-frame p-1">
-                          <div className="fc-event-time font-medium">
-                            {format(
-                              parseISO(
-                                `2000-01-01T${eventInfo.event.extendedProps.slot.start}`
-                              ),
-                              "h:mm a"
-                            )}
+                      eventContent={(eventInfo) => {
+                        const slot = eventInfo.event.extendedProps.slot;
+                        return (
+                          <div className="fc-event-main-frame p-1">
+                            <span>
+                              {format(
+                                parseISO(`2000-01-01T${slot.start}`),
+                                "h:mm a"
+                              )}{" "}
+                              -{" "}
+                              {format(
+                                parseISO(`2000-01-01T${slot.end}`),
+                                "h:mm a"
+                              )}
+                            </span>
                           </div>
-                          <div className="fc-event-title font-medium">
-                            Available
-                          </div>
-                        </div>
-                      )}
+                        );
+                      }}
                     />
                   </div>
                 </div>
