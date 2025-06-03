@@ -1,0 +1,11 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Disallow booking process pages
+Disallow: /book/step1
+Disallow: /book/step2
+Disallow: /book/step3
+
+# Sitemap location
+Sitemap: https://requestapro.com/sitemap.xml 

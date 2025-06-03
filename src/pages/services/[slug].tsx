@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { NextSeo } from "next-seo";
 import { services, Service } from "@/data/services";
 import { HomeIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
@@ -60,123 +61,156 @@ export default function ServicePage({ service }: ServicePageProps) {
   const serviceDetails = getServiceDetails(service);
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Breadcrumb */}
-      <nav className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-12">
-            <Link href="/" className="text-gray-500 hover:text-gray-700">
-              <HomeIcon className="h-5 w-5" />
-            </Link>
-            <ChevronRightIcon className="h-5 w-5 text-gray-400 mx-2" />
-            <Link
-              href="/services"
-              className="text-gray-500 hover:text-gray-700"
-            >
-              Services
-            </Link>
-            <ChevronRightIcon className="h-5 w-5 text-gray-400 mx-2" />
-            <span className="text-gray-900">{service.title}</span>
+    <>
+      <NextSeo
+        title={`${service.title} | Professional Installation Services`}
+        description={`Professional ${service.title.toLowerCase()} services starting at $${
+          service.basePrice
+        }. ${service.description}`}
+        canonical={`https://requestapro.com/services/${service.slug}`}
+        openGraph={{
+          title: `${service.title} | Professional Installation Services`,
+          description: `Professional ${service.title.toLowerCase()} services starting at $${
+            service.basePrice
+          }. ${service.description}`,
+          url: `https://requestapro.com/services/${service.slug}`,
+          type: "website",
+          images: [
+            {
+              url: `https://requestapro.com/${service.image}`,
+              width: 1200,
+              height: 630,
+              alt: service.title,
+            },
+          ],
+        }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content: `${service.title.toLowerCase()}, professional installation, home services, ${
+              service.slug
+            }, installation services`,
+          },
+        ]}
+      />
+      <div className="min-h-screen bg-gray-50">
+        {/* Breadcrumb */}
+        <nav className="bg-white border-b">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center h-12">
+              <Link href="/" className="text-gray-500 hover:text-gray-700">
+                <HomeIcon className="h-5 w-5" />
+              </Link>
+              <ChevronRightIcon className="h-5 w-5 text-gray-400 mx-2" />
+              <Link
+                href="/services"
+                className="text-gray-500 hover:text-gray-700"
+              >
+                Services
+              </Link>
+              <ChevronRightIcon className="h-5 w-5 text-gray-400 mx-2" />
+              <span className="text-gray-900">{service.title}</span>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-          {/* Main Content */}
-          <div className="lg:col-span-2">
-            {/* Hero Banner */}
-            <div className="relative h-64 rounded-lg overflow-hidden mb-8">
-              <Image
-                src={`/${service.image}`}
-                alt={service.title}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-0 left-0 p-6 text-white">
-                <h1 className="text-3xl font-bold mb-2 text-white">
-                  {service.title}
-                </h1>
-                <div className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-lg font-semibold">
-                  From ${service.basePrice}
-                  {service.unit}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+            {/* Main Content */}
+            <div className="lg:col-span-2">
+              {/* Hero Banner */}
+              <div className="relative h-64 rounded-lg overflow-hidden mb-8">
+                <Image
+                  src={`/${service.image}`}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div className="absolute bottom-0 left-0 p-6 text-white">
+                  <h1 className="text-3xl font-bold mb-2 text-white">
+                    {service.title}
+                  </h1>
+                  <div className="inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-lg font-semibold">
+                    From ${service.basePrice}
+                    {service.unit}
+                  </div>
                 </div>
+              </div>
+
+              {/* Description */}
+              <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <h2 className="text-2xl font-semibold mb-6 text-gray-900">
+                  About This Service
+                </h2>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                {service.pricingNote && (
+                  <p className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
+                    {service.pricingNote}
+                  </p>
+                )}
+              </div>
+
+              {/* What's Included */}
+              <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+                <h2 className="text-2xl font-semibold mb-6 text-gray-900">
+                  What&apos;s Included
+                </h2>
+                <ul className="space-y-4">
+                  {serviceDetails.included.map((item, index) => (
+                    <li key={index} className="flex items-start">
+                      <svg
+                        className="h-6 w-6 text-green-500 mr-3 mt-0.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className="text-gray-600">{item}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
 
-            {/* Description */}
-            <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-              <h2 className="text-2xl font-semibold mb-6 text-gray-900">
-                About This Service
-              </h2>
-              <p className="text-gray-600 mb-6">{service.description}</p>
-              {service.pricingNote && (
-                <p className="text-sm text-gray-600 bg-gray-50 p-4 rounded-lg">
-                  {service.pricingNote}
-                </p>
-              )}
-            </div>
-
-            {/* What's Included */}
-            <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
-              <h2 className="text-2xl font-semibold mb-6 text-gray-900">
-                What&apos;s Included
-              </h2>
-              <ul className="space-y-4">
-                {serviceDetails.included.map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <svg
-                      className="h-6 w-6 text-green-500 mr-3 mt-0.5"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+            {/* Booking Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-8 bg-white rounded-lg shadow-sm p-6">
+                <h3 className="text-2xl font-bold mb-6 text-gray-900">
+                  Book This Service
+                </h3>
+                <div className="space-y-4">
+                  <div className="flex justify-between text-gray-600">
+                    <span>Starting at:</span>
+                    <span>
+                      ${service.basePrice}
+                      {service.unit}
+                    </span>
+                  </div>
+                  <div className="border-t pt-4">
+                    <Link
+                      href={`/book/step1?service=${service.slug}`}
+                      className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className="text-gray-600">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-
-          {/* Booking Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-8 bg-white rounded-lg shadow-sm p-6">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900">
-                Book This Service
-              </h3>
-              <div className="space-y-4">
-                <div className="flex justify-between text-gray-600">
-                  <span>Starting at:</span>
-                  <span>
-                    ${service.basePrice}
-                    {service.unit}
-                  </span>
+                      Book Now
+                    </Link>
+                  </div>
+                  <p className="text-sm text-gray-500 text-center">
+                    Get a detailed quote during booking
+                  </p>
                 </div>
-                <div className="border-t pt-4">
-                  <Link
-                    href={`/book/step1?service=${service.slug}`}
-                    className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
-                  >
-                    Book Now
-                  </Link>
-                </div>
-                <p className="text-sm text-gray-500 text-center">
-                  Get a detailed quote during booking
-                </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
