@@ -386,26 +386,91 @@ export default function BookingStep3() {
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500">
+                    <h3 className="text-sm font-medium text-gray-700 mb-1">
                       Service
                     </h3>
-                    <p className="text-gray-900">{service.title}</p>
+                    <p className="text-base text-gray-900 font-medium">
+                      {service.title}
+                    </p>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-medium text-gray-500">
+                    <h3 className="text-sm font-medium text-gray-700 mb-1">
                       Date & Time
                     </h3>
-                    <p className="text-gray-900">
+                    <p className="text-base text-gray-900">
                       {date && format(date, "EEEE, MMMM d, yyyy")}
                     </p>
-                    <p className="text-gray-900">{timeSlot}</p>
+                    <p className="text-base text-gray-900 font-medium">
+                      {timeSlot}
+                    </p>
                   </div>
 
-                  <div className="border-t pt-4">
-                    <div className="flex justify-between text-lg font-semibold">
-                      <span>Total</span>
-                      <span className="text-blue-600">
+                  {/* Service Details */}
+                  {serviceSlug === "tv-mounting" && tvMountingDetails && (
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-700 mb-1">
+                        TV Details
+                      </h3>
+                      <p className="text-base text-gray-900">
+                        {tvMountingDetails.tvSizeRange} TV (
+                        {tvMountingDetails.exactTVSize} inches)
+                      </p>
+                      <p className="text-base text-gray-900">
+                        {tvMountingDetails.wallMountType} Mount
+                      </p>
+                      {tvMountingDetails.wireManagement !== "none" && (
+                        <p className="text-base text-gray-900">
+                          With Wire Management
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {serviceSlug === "smart-install" && smartHomeDetails && (
+                    <div>
+                      <h3 className="text-sm font-medium text-gray-700 mb-1">
+                        Smart Home Details
+                      </h3>
+                      <p className="text-base text-gray-900">
+                        {smartHomeDetails.deviceType} (
+                        {smartHomeDetails.deviceCount})
+                      </p>
+                      {smartHomeDetails.deviceBrand && (
+                        <p className="text-base text-gray-900">
+                          Brand: {smartHomeDetails.deviceBrand}
+                        </p>
+                      )}
+                      {smartHomeDetails.networkSetup !== "none" && (
+                        <p className="text-base text-gray-900">
+                          With Network Setup
+                        </p>
+                      )}
+                    </div>
+                  )}
+
+                  {serviceSlug === "furniture-assembly" &&
+                    furnitureAssemblyDetails && (
+                      <div>
+                        <h3 className="text-sm font-medium text-gray-700 mb-1">
+                          Assembly Details
+                        </h3>
+                        <p className="text-base text-gray-900">
+                          {furnitureAssemblyDetails.jobSize} Job
+                        </p>
+                        <p className="text-base text-gray-900">
+                          {furnitureAssemblyDetails.itemCount} Item
+                          {furnitureAssemblyDetails.itemCount > 1 ? "s" : ""}
+                        </p>
+                      </div>
+                    )}
+
+                  <div className="border-t border-gray-200 pt-4 mt-4">
+                    <div className="flex justify-between items-center">
+                      <span className="text-base font-semibold text-gray-900">
+                        Total
+                      </span>
+                      <span className="text-lg font-bold text-blue-600">
                         ${calculateTotal()}
                         {service.unit}
                       </span>
