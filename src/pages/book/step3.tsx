@@ -229,15 +229,17 @@ export default function BookingStep3() {
                   <h1 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900">
                     Complete Your Booking
                   </h1>
-                  <p className="text-sm sm:text-base text-gray-700">
+                  <p className="text-base text-gray-800">
                     Please provide your contact information to confirm your
                     appointment
                   </p>
                 </div>
 
                 {error && (
-                  <div className="mb-6 p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-sm sm:text-base text-red-600">{error}</p>
+                  <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <p className="text-base text-red-700 font-medium">
+                      {error}
+                    </p>
                   </div>
                 )}
 
@@ -249,17 +251,17 @@ export default function BookingStep3() {
                   <div className="grid grid-cols-1 gap-4 sm:gap-6">
                     {/* Name */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                      <label className="block text-base font-medium text-gray-800 mb-2">
                         Full Name *
                       </label>
                       <input
                         type="text"
                         {...register("name")}
                         placeholder="John Doe"
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                       {errors.name && (
-                        <p className="mt-1 text-sm text-red-600">
+                        <p className="mt-2 text-base text-red-700 font-medium">
                           {errors.name.message}
                         </p>
                       )}
@@ -267,17 +269,17 @@ export default function BookingStep3() {
 
                     {/* Email */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                      <label className="block text-base font-medium text-gray-800 mb-2">
                         Email Address *
                       </label>
                       <input
                         type="email"
                         {...register("email")}
                         placeholder="john@example.com"
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                       {errors.email && (
-                        <p className="mt-1 text-sm text-red-600">
+                        <p className="mt-2 text-base text-red-700 font-medium">
                           {errors.email.message}
                         </p>
                       )}
@@ -285,7 +287,7 @@ export default function BookingStep3() {
 
                     {/* Phone */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                      <label className="block text-base font-medium text-gray-800 mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -293,10 +295,10 @@ export default function BookingStep3() {
                         inputMode="tel"
                         {...register("phone")}
                         placeholder="(555) 555-5555"
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                       {errors.phone && (
-                        <p className="mt-1 text-sm text-red-600">
+                        <p className="mt-2 text-base text-red-700 font-medium">
                           {errors.phone.message}
                         </p>
                       )}
@@ -304,17 +306,17 @@ export default function BookingStep3() {
 
                     {/* Address */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                      <label className="block text-base font-medium text-gray-800 mb-2">
                         Service Address *
                       </label>
                       <input
                         type="text"
                         {...register("address")}
                         placeholder="123 Main St, City, State ZIP"
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                       {errors.address && (
-                        <p className="mt-1 text-sm text-red-600">
+                        <p className="mt-2 text-base text-red-700 font-medium">
                           {errors.address.message}
                         </p>
                       )}
@@ -322,14 +324,14 @@ export default function BookingStep3() {
 
                     {/* Notes */}
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1 sm:mb-2">
+                      <label className="block text-base font-medium text-gray-800 mb-2">
                         Additional Notes (Optional)
                       </label>
                       <textarea
                         {...register("notes")}
                         rows={3}
                         placeholder="Any special instructions or requirements..."
-                        className="w-full rounded-lg border border-gray-300 px-3 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       />
                     </div>
                   </div>
@@ -338,12 +340,12 @@ export default function BookingStep3() {
                     <button
                       type="submit"
                       disabled={isSubmitting || hasSubmitted}
-                      className="w-full bg-blue-600 text-white py-3 px-4 rounded-lg font-semibold text-base hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-800 touch-manipulation"
+                      className="w-full bg-blue-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 active:bg-blue-800 touch-manipulation"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center justify-center">
                           <svg
-                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                            className="animate-spin -ml-1 mr-3 h-6 w-6 text-white"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
@@ -370,7 +372,7 @@ export default function BookingStep3() {
                         "Submit Booking"
                       )}
                     </button>
-                    <p className="mt-2 text-sm text-gray-500 text-center">
+                    <p className="mt-3 text-base text-gray-700 text-center font-medium">
                       * Required fields
                     </p>
                   </div>
@@ -380,28 +382,28 @@ export default function BookingStep3() {
 
             {/* Booking Summary */}
             <div className="md:col-span-1">
-              <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6 sticky top-4 sm:top-8">
-                <h2 className="text-lg font-semibold mb-4 text-gray-900">
+              <div className="bg-white rounded-lg shadow-sm p-6 sticky top-4 sm:top-8">
+                <h2 className="text-xl font-bold mb-6 text-gray-900">
                   Booking Summary
                 </h2>
-                <div className="space-y-4">
+                <div className="space-y-6">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-1">
+                    <h3 className="text-base font-semibold text-gray-800 mb-2">
                       Service
                     </h3>
-                    <p className="text-base text-gray-900 font-medium">
+                    <p className="text-lg text-gray-900 font-medium">
                       {service.title}
                     </p>
                   </div>
 
                   <div>
-                    <h3 className="text-sm font-medium text-gray-700 mb-1">
+                    <h3 className="text-base font-semibold text-gray-800 mb-2">
                       Date & Time
                     </h3>
-                    <p className="text-base text-gray-900">
+                    <p className="text-lg text-gray-900">
                       {date && format(date, "EEEE, MMMM d, yyyy")}
                     </p>
-                    <p className="text-base text-gray-900 font-medium">
+                    <p className="text-lg text-gray-900 font-medium">
                       {timeSlot}
                     </p>
                   </div>
@@ -409,18 +411,18 @@ export default function BookingStep3() {
                   {/* Service Details */}
                   {serviceSlug === "tv-mounting" && tvMountingDetails && (
                     <div>
-                      <h3 className="text-sm font-medium text-gray-700 mb-1">
+                      <h3 className="text-base font-semibold text-gray-800 mb-2">
                         TV Details
                       </h3>
-                      <p className="text-base text-gray-900">
+                      <p className="text-lg text-gray-900">
                         {tvMountingDetails.tvSizeRange} TV (
                         {tvMountingDetails.exactTVSize} inches)
                       </p>
-                      <p className="text-base text-gray-900">
+                      <p className="text-lg text-gray-900">
                         {tvMountingDetails.wallMountType} Mount
                       </p>
                       {tvMountingDetails.wireManagement !== "none" && (
-                        <p className="text-base text-gray-900">
+                        <p className="text-lg text-gray-900">
                           With Wire Management
                         </p>
                       )}
@@ -429,20 +431,20 @@ export default function BookingStep3() {
 
                   {serviceSlug === "smart-install" && smartHomeDetails && (
                     <div>
-                      <h3 className="text-sm font-medium text-gray-700 mb-1">
+                      <h3 className="text-base font-semibold text-gray-800 mb-2">
                         Smart Home Details
                       </h3>
-                      <p className="text-base text-gray-900">
+                      <p className="text-lg text-gray-900">
                         {smartHomeDetails.deviceType} (
                         {smartHomeDetails.deviceCount})
                       </p>
                       {smartHomeDetails.deviceBrand && (
-                        <p className="text-base text-gray-900">
+                        <p className="text-lg text-gray-900">
                           Brand: {smartHomeDetails.deviceBrand}
                         </p>
                       )}
                       {smartHomeDetails.networkSetup !== "none" && (
-                        <p className="text-base text-gray-900">
+                        <p className="text-lg text-gray-900">
                           With Network Setup
                         </p>
                       )}
@@ -452,25 +454,25 @@ export default function BookingStep3() {
                   {serviceSlug === "furniture-assembly" &&
                     furnitureAssemblyDetails && (
                       <div>
-                        <h3 className="text-sm font-medium text-gray-700 mb-1">
+                        <h3 className="text-base font-semibold text-gray-800 mb-2">
                           Assembly Details
                         </h3>
-                        <p className="text-base text-gray-900">
+                        <p className="text-lg text-gray-900">
                           {furnitureAssemblyDetails.jobSize} Job
                         </p>
-                        <p className="text-base text-gray-900">
+                        <p className="text-lg text-gray-900">
                           {furnitureAssemblyDetails.itemCount} Item
                           {furnitureAssemblyDetails.itemCount > 1 ? "s" : ""}
                         </p>
                       </div>
                     )}
 
-                  <div className="border-t border-gray-200 pt-4 mt-4">
+                  <div className="border-t-2 border-gray-200 pt-6 mt-6">
                     <div className="flex justify-between items-center">
-                      <span className="text-base font-semibold text-gray-900">
+                      <span className="text-lg font-bold text-gray-900">
                         Total
                       </span>
-                      <span className="text-lg font-bold text-blue-600">
+                      <span className="text-2xl font-bold text-blue-600">
                         ${calculateTotal()}
                         {service.unit}
                       </span>
@@ -482,6 +484,36 @@ export default function BookingStep3() {
           </div>
         </div>
       </div>
+
+      {/* Add mobile-specific styles */}
+      <style jsx global>{`
+        @media (max-width: 640px) {
+          input,
+          textarea {
+            font-size: 16px !important; /* Prevents iOS zoom on focus */
+          }
+          .fc .fc-toolbar-title {
+            font-size: 1.25rem !important;
+            color: #1f2937 !important;
+            font-weight: 600 !important;
+          }
+          .fc .fc-col-header-cell-cushion {
+            font-size: 0.875rem !important;
+            color: #1f2937 !important;
+            font-weight: 600 !important;
+          }
+          .fc .fc-daygrid-day-number {
+            font-size: 0.875rem !important;
+            color: #1f2937 !important;
+            font-weight: 500 !important;
+          }
+          .fc .fc-event-title {
+            font-size: 0.875rem !important;
+            color: white !important;
+            font-weight: 500 !important;
+          }
+        }
+      `}</style>
     </>
   );
 }

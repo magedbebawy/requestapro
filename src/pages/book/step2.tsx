@@ -163,7 +163,7 @@ export default function BookingStep2() {
                       allDaySlot={false}
                       dayHeaderFormat={{ weekday: "short" }}
                       eventDisplay="block"
-                      eventMinHeight={30}
+                      eventMinHeight={40}
                       stickyHeaderDates={true}
                       nowIndicator={true}
                       expandRows={true}
@@ -177,8 +177,8 @@ export default function BookingStep2() {
                         day: "Day",
                       }}
                       eventContent={(eventInfo) => (
-                        <div className="fc-event-main-frame">
-                          <div className="fc-event-time">
+                        <div className="fc-event-main-frame p-1">
+                          <div className="fc-event-time font-medium">
                             {format(
                               parseISO(
                                 `2000-01-01T${eventInfo.event.extendedProps.slot.start}`
@@ -186,7 +186,9 @@ export default function BookingStep2() {
                               "h:mm a"
                             )}
                           </div>
-                          <div className="fc-event-title">Available</div>
+                          <div className="fc-event-title font-medium">
+                            Available
+                          </div>
                         </div>
                       )}
                     />
@@ -198,109 +200,104 @@ export default function BookingStep2() {
                   <p>Click on an available time slot to select it</p>
                 </div>
 
-                {/* Add custom styles for mobile calendar */}
+                {/* Add mobile-specific styles */}
                 <style jsx global>{`
-                  .mobile-calendar {
-                    @media (max-width: 640px) {
-                      font-size: 14px;
-                    }
-                  }
                   @media (max-width: 640px) {
                     .fc {
-                      font-size: 14px;
+                      font-size: 16px !important;
                     }
                     .fc .fc-toolbar {
                       flex-direction: column;
-                      gap: 0.5rem;
-                      padding: 0.5rem;
+                      gap: 0.75rem;
+                      padding: 0.75rem;
+                      background-color: #f8fafc;
+                      border-radius: 0.5rem;
+                      margin-bottom: 1rem;
                     }
                     .fc .fc-toolbar-title {
-                      font-size: 1.2em;
+                      font-size: 1.25rem !important;
+                      color: #1f2937 !important;
+                      font-weight: 600 !important;
+                      text-align: center;
                       margin: 0.5rem 0;
                     }
                     .fc .fc-button {
-                      padding: 0.4em 0.65em;
-                      font-size: 0.9em;
-                      white-space: nowrap;
+                      padding: 0.5em 0.75em;
+                      font-size: 0.875rem !important;
+                      font-weight: 500 !important;
+                      background-color: #3b82f6 !important;
+                      border-color: #3b82f6 !important;
+                      color: white !important;
+                      border-radius: 0.375rem !important;
+                      height: auto !important;
+                      line-height: 1.25 !important;
+                    }
+                    .fc .fc-button:hover {
+                      background-color: #2563eb !important;
+                      border-color: #2563eb !important;
                     }
                     .fc .fc-button-group {
                       display: flex;
-                      gap: 0.25rem;
+                      gap: 0.5rem;
                       flex-wrap: wrap;
                       justify-content: center;
-                    }
-                    .fc .fc-daygrid-day {
-                      min-height: 2.5em;
-                    }
-                    .fc .fc-daygrid-day-number {
-                      padding: 0.25rem;
-                      font-size: 0.9em;
-                    }
-                    .fc .fc-event {
-                      margin: 0.1rem 0;
-                      padding: 0.1rem 0.25rem;
-                      border-radius: 0.25rem;
-                    }
-                    .fc .fc-event-time {
-                      font-size: 0.85em;
-                      font-weight: 500;
-                    }
-                    .fc .fc-event-title {
-                      font-size: 0.85em;
                     }
                     .fc .fc-col-header-cell {
-                      padding: 0.25rem 0;
+                      padding: 0.5rem 0;
+                      background-color: #f8fafc;
                     }
                     .fc .fc-col-header-cell-cushion {
-                      padding: 0.25rem;
-                      font-size: 0.9em;
+                      padding: 0.5rem;
+                      font-size: 0.875rem !important;
+                      color: #1f2937 !important;
+                      font-weight: 600 !important;
+                      text-decoration: none !important;
                     }
-                    .fc .fc-timegrid-slot {
-                      height: 2.5em;
+                    .fc .fc-daygrid-day {
+                      min-height: 3em;
                     }
-                    .fc .fc-timegrid-slot-label {
-                      font-size: 0.85em;
+                    .fc .fc-daygrid-day-number {
+                      padding: 0.5rem;
+                      font-size: 0.875rem !important;
+                      color: #1f2937 !important;
+                      font-weight: 500 !important;
+                      text-decoration: none !important;
                     }
-                    .fc .fc-timegrid-axis {
-                      padding: 0.25rem;
-                      font-size: 0.85em;
+                    .fc .fc-event {
+                      margin: 0.25rem 0;
+                      padding: 0.25rem 0.5rem;
+                      border-radius: 0.375rem;
+                      background-color: #3b82f6 !important;
+                      border-color: #3b82f6 !important;
                     }
-                    .fc .fc-timegrid-slot-minor {
-                      border-top-style: none;
+                    .fc .fc-event-time {
+                      font-size: 0.875rem !important;
+                      font-weight: 500 !important;
+                      color: white !important;
                     }
-                    .fc .fc-timegrid-now-indicator-line {
-                      border-top-width: 2px;
-                    }
-                    .fc .fc-timegrid-now-indicator-arrow {
-                      border-width: 5px;
-                    }
-                    .fc .fc-toolbar-chunk {
-                      display: flex;
-                      gap: 0.25rem;
-                      flex-wrap: wrap;
-                      justify-content: center;
-                    }
-                    .fc .fc-toolbar-chunk:last-child {
-                      margin-top: 0.5rem;
+                    .fc .fc-event-title {
+                      font-size: 0.875rem !important;
+                      font-weight: 500 !important;
+                      color: white !important;
                     }
                     .fc .fc-day-today {
-                      background-color: #f0f9ff;
+                      background-color: #eff6ff !important;
                     }
-                    .fc .fc-event:hover {
-                      cursor: pointer;
-                      background-color: #2563eb;
+                    .fc .fc-day-today .fc-daygrid-day-number {
+                      background-color: #3b82f6;
+                      color: white;
+                      border-radius: 50%;
+                      width: 1.75rem;
+                      height: 1.75rem;
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: center;
                     }
-                    .fc .fc-button-primary:not(:disabled):active,
-                    .fc .fc-button-primary:not(:disabled).fc-button-active {
-                      background-color: #1d4ed8;
-                      border-color: #1d4ed8;
-                    }
-                    .fc .fc-button-primary:not(:disabled):focus {
-                      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3b82f6;
-                    }
-                    /* Additional mobile optimizations */
                     .fc .fc-view-harness {
-                      min-height: 300px;
+                      min-height: 400px;
+                      border-radius: 0.5rem;
+                      overflow: hidden;
+                      border: 1px solid #e5e7eb;
                     }
                     .fc .fc-scrollgrid {
                       border-radius: 0.5rem;
@@ -313,36 +310,42 @@ export default function BookingStep2() {
                       width: 100% !important;
                     }
                     .fc .fc-daygrid-day-frame {
-                      min-height: 2.5em;
+                      min-height: 3em;
                     }
                     .fc .fc-daygrid-day-events {
-                      padding: 0.1rem;
+                      padding: 0.25rem;
                     }
                     .fc .fc-daygrid-event {
-                      margin: 0.1rem 0;
+                      margin: 0.25rem 0;
                     }
                     .fc .fc-daygrid-event-dot {
                       border-color: #3b82f6;
                     }
                     .fc .fc-daygrid-event-harness {
-                      margin-top: 0.1rem;
+                      margin-top: 0.25rem;
                     }
                     .fc .fc-daygrid-more-link {
-                      font-size: 0.85em;
-                      padding: 0.1rem 0.25rem;
+                      font-size: 0.875rem !important;
+                      padding: 0.25rem 0.5rem;
+                      color: #3b82f6 !important;
+                      font-weight: 500 !important;
                     }
-                    .fc .fc-daygrid-day.fc-day-today {
-                      background-color: #f0f9ff;
-                    }
-                    .fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
-                      background-color: #3b82f6;
-                      color: white;
-                      border-radius: 50%;
-                      width: 1.5em;
-                      height: 1.5em;
-                      display: inline-flex;
-                      align-items: center;
+                    .fc .fc-toolbar-chunk {
+                      display: flex;
+                      gap: 0.5rem;
+                      flex-wrap: wrap;
                       justify-content: center;
+                    }
+                    .fc .fc-toolbar-chunk:last-child {
+                      margin-top: 0.5rem;
+                    }
+                    .fc .fc-button-primary:not(:disabled):active,
+                    .fc .fc-button-primary:not(:disabled).fc-button-active {
+                      background-color: #2563eb !important;
+                      border-color: #2563eb !important;
+                    }
+                    .fc .fc-button-primary:not(:disabled):focus {
+                      box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3b82f6;
                     }
                   }
                 `}</style>
