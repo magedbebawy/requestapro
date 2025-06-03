@@ -347,6 +347,25 @@ export default function BookingStep2() {
                     .fc .fc-button-primary:not(:disabled):focus {
                       box-shadow: 0 0 0 2px #fff, 0 0 0 4px #3b82f6;
                     }
+                    .fc .fc-event-main-frame {
+                      display: flex;
+                      flex-direction: column;
+                      align-items: center;
+                      justify-content: center;
+                      min-height: 2.5rem;
+                      font-size: 1rem !important;
+                      color: #fff !important;
+                      font-weight: 700 !important;
+                      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                      overflow: visible !important;
+                    }
+                    .fc .fc-event-time,
+                    .fc .fc-event-title {
+                      color: #fff !important;
+                      font-size: 1rem !important;
+                      font-weight: 700 !important;
+                      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+                    }
                   }
                 `}</style>
               </>

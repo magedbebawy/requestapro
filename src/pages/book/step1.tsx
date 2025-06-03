@@ -541,27 +541,47 @@ export default function BookingStep1() {
                   </h2>
                   <ul className="mb-6 space-y-2">
                     <li>
-                      <span className="font-medium">TV Size:</span>{" "}
-                      {tvMountingDetails?.tvSizeRange}
+                      <span className="font-medium text-gray-900">
+                        TV Size:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {tvMountingDetails?.tvSizeRange}
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Wall Mount:</span>{" "}
-                      {tvMountingDetails?.wallMountType}
+                      <span className="font-medium text-gray-900">
+                        Wall Mount:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {tvMountingDetails?.wallMountType}
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Wire Management:</span>{" "}
-                      {tvMountingDetails?.wireManagement}
+                      <span className="font-medium text-gray-900">
+                        Wire Management:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {tvMountingDetails?.wireManagement}
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Lifting Help:</span>{" "}
-                      {tvMountingDetails?.liftingHelp}
+                      <span className="font-medium text-gray-900">
+                        Lifting Help:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {tvMountingDetails?.liftingHelp}
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Exact TV Size:</span>{" "}
-                      {tvMountingDetails?.exactTVSize} in
+                      <span className="font-medium text-gray-900">
+                        Exact TV Size:
+                      </span>{" "}
+                      <span className="text-gray-900">
+                        {tvMountingDetails?.exactTVSize} in
+                      </span>
                     </li>
                     <li>
-                      <span className="font-medium">Total:</span>{" "}
+                      <span className="font-medium text-gray-900">Total:</span>{" "}
                       <span className="text-blue-600 font-bold">
                         ${calculateTotal()}
                       </span>
