@@ -8,7 +8,7 @@ env:
   AZURE_WEBAPP_NAME: requestapro-webapp
   AZURE_RESOURCE_GROUP: requestAPro
   AZURE_CONTAINER_REGISTRY: magedacr.azurecr.io
-  IMAGE_NAME: requestapro-website
+  IMAGE_NAME: requestapro-webapp
 
 jobs:
   build-and-deploy:
@@ -34,9 +34,3 @@ jobs:
         run: |
           docker build -t ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
           docker push ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: ${{ env.AZURE_WEBAPP_NAME }}
-          images: ${{ env.AZURE_CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
