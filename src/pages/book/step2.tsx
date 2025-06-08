@@ -1,20 +1,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
 import { useBooking } from "@/context/BookingContext";
-import {
-  format,
-  parseISO,
-  isToday,
-  isPast,
-  addDays,
-  setHours,
-  setMinutes,
-} from "date-fns";
+import { format, parseISO, addDays, setHours, setMinutes } from "date-fns";
 import CalendarPicker from "@/components/CalendarPicker";
 
 type TimeSlot = {
@@ -27,16 +15,6 @@ type Availability = {
   date: string;
   slots: TimeSlot[];
 }[];
-
-// Add this type for FullCalendar event click info
-interface FullCalendarEvent {
-  event: {
-    startStr: string;
-    extendedProps: {
-      slot: TimeSlot;
-    };
-  };
-}
 
 // Generate time slots for a given date (same as backend)
 const generateTimeSlots = (date: Date): TimeSlot[] => {
@@ -90,44 +68,6 @@ export default function BookingStep2() {
     });
     setAvailability(avail);
   }, [serviceSlug, router]);
-
-  // Convert availability to calendar events
-  const events = availability.flatMap((day) =>
-    day.slots
-      .filter((slot) => slot.available)
-      .map((slot) => ({
-        title: `${format(
-          parseISO(`2000-01-01T${slot.start}`),
-          "h:mm a"
-        )} - ${format(parseISO(`2000-01-01T${slot.end}`), "h:mm a")}`,
-        date: day.date,
-        start: `${day.date}T${slot.start}`,
-        end: `${day.date}T${slot.end}`,
-        extendedProps: { slot },
-        backgroundColor: "#3B82F6",
-        borderColor: "#3B82F6",
-        textColor: "#ffffff",
-      }))
-  );
-
-  // Update handleEventClick to use FullCalendarEvent instead of any
-  const handleEventClick = (info: unknown) => {
-    if (
-      typeof info === "object" &&
-      info !== null &&
-      "event" in info &&
-      typeof (info as FullCalendarEvent).event === "object" &&
-      (info as FullCalendarEvent).event !== null &&
-      "startStr" in (info as FullCalendarEvent).event
-    ) {
-      const event = (info as FullCalendarEvent).event;
-      const date = event.startStr.split("T")[0];
-      if (isPast(parseISO(date)) && !isToday(parseISO(date))) return;
-      setSelectedDate(date);
-      setSelectedSlot(event.extendedProps.slot);
-      setView("timeSlots");
-    }
-  };
 
   const handleNext = () => {
     if (!selectedDate || !selectedSlot) return;
