@@ -55,8 +55,8 @@ export default function handler(
     return res.status(405).json([]);
   }
 
-  // Generate availability for the next 7 days
-  const availability: Availability = Array.from({ length: 7 }, (_, i) => {
+  // Generate availability for the next 31 days
+  const availability: Availability = Array.from({ length: 31 }, (_, i) => {
     const date = addDays(new Date(), i);
     return {
       date: format(date, "yyyy-MM-dd"),
