@@ -39,7 +39,7 @@ type BookingData = {
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<{ success: boolean } | { error: string }>
+  res: NextApiResponse<{ success: boolean } | { error: string }>,
 ) {
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
@@ -56,7 +56,7 @@ export default async function handler(
   ];
 
   const missingEnvVars = requiredEnvVars.filter(
-    (envVar) => !process.env[envVar]
+    (envVar) => !process.env[envVar],
   );
 
   if (missingEnvVars.length > 0) {
@@ -210,7 +210,7 @@ export default async function handler(
               <div class="detail-row">
                 <span class="label">Date:</span>
                 <span class="value">${new Date(
-                  bookingData.date
+                  bookingData.date,
                 ).toLocaleDateString()}</span>
               </div>
               <div class="detail-row">
