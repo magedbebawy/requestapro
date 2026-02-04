@@ -1,4 +1,4 @@
-import { NextSeo } from "next-seo";
+import { NextSeo, LocalBusinessJsonLd } from "next-seo";
 import Link from "next/link";
 import Image from "next/image";
 import { services } from "@/data/services";
@@ -35,6 +35,44 @@ export default function HomePage() {
             name: "keywords",
             content:
               "home services, professional installation, repair services, maintenance, home improvement, contractors",
+          },
+        ]}
+      />
+      <LocalBusinessJsonLd
+        type="ProfessionalService"
+        id="https://requestapro.com"
+        name="RequestAPro"
+        description="Professional home services including TV mounting, smart home installation, and furniture assembly."
+        url="https://requestapro.com"
+        telephone="+1-9093898092"
+        address={{
+          addressLocality: "Ranch cucamonga",
+          addressRegion: "CA",
+          postalCode: "91730",
+          addressCountry: "US",
+        }}
+        geo={{
+          latitude: "34.1064",
+          longitude: "-117.5931",
+        }}
+        images={[
+          "https://requestapro.com/hero-bg.png",
+          "https://requestapro.com/logo.png",
+        ]}
+        priceRange="$69 - $150+"
+        openingHours={[
+          {
+            opens: "08:00",
+            closes: "20:00",
+            dayOfWeek: [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday",
+              "Sunday",
+            ],
           },
         ]}
       />
