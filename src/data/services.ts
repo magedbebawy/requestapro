@@ -14,7 +14,7 @@ export type Service = {
 export const services: Service[] = [
   {
     slug: "tv-mounting",
-    title: "TV Mounting Service in Rancho Cucamonga",
+    title: "TV Mounting Service",
     shortTitle: "TV Mounting",
     description:
       "Professional TV wall mounting for any size TV. We find studs, mount the bracket securely, connect your cables, and clean up. Same-day appointments available in Rancho Cucamonga and nearby cities.",
